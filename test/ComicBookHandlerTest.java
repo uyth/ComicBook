@@ -9,9 +9,9 @@ public class ComicBookHandlerTest {
     @Test
     public void registerComicBookRelease() {
         ComicBookHandler handler = new ComicBookHandler();
-        assertEquals(handler.getReleases().size(), 0);
+        assertEquals(0, handler.getReleases().size());
         handler.registerComicRelease("Test", 100, new Date());
-        assertEquals(handler.getReleases().size(), 1);
+        assertEquals(1, handler.getReleases().size());
     }
 
     @Test
@@ -23,7 +23,6 @@ public class ComicBookHandlerTest {
         handler.registerComicRelease("Test", 100, new Date());
         handler.registerComicBook(1, 100, Condition.UNDER_EVALUATION, new Date());
 
-
         assertEquals(1, handler.getComicBooks().size());
     }
 
@@ -33,17 +32,17 @@ public class ComicBookHandlerTest {
         handler.registerComicRelease("Test", 100, new Date());
         handler.registerComicBook(1, 100, Condition.UNDER_EVALUATION, new Date());
 
-        assertEquals(handler.getComicBook(1).getCondition(), Condition.UNDER_EVALUATION);
+        assertEquals(Condition.UNDER_EVALUATION, handler.getComicBook(1).getCondition());
         assertEquals(0, handler.getComicBook(1).getPrice(), 0.005);
 
         handler.updateComicBook(1, 200, Condition.AS_NEW);
 
-        assertEquals(handler.getComicBook(1).getCondition(), Condition.AS_NEW);
-        assertEquals(handler.getComicBook(1).getPrice(), 200, 0.005);
+        assertEquals(Condition.AS_NEW, handler.getComicBook(1).getCondition());
+        assertEquals(200, handler.getComicBook(1).getPrice(), 0.005);
 
         handler.registerComicBook(1, 300, Condition.AS_NEW, new Date());
 
-        assertEquals(handler.getComicBook(2).getPrice(), 300, 0.005);
+        assertEquals(300, handler.getComicBook(2).getPrice(), 0.005);
     }
 
     @Test
@@ -65,7 +64,7 @@ public class ComicBookHandlerTest {
         handler.registerComicRelease("Test", 100, new Date());
         handler.registerComicBook(1, 100, Condition.UNDER_EVALUATION, new Date());
 
-        assertEquals(handler.getComicBook(1).getCondition(), Condition.UNDER_EVALUATION);
+        assertEquals(Condition.UNDER_EVALUATION, handler.getComicBook(1).getCondition());
         assertEquals(0, handler.getComicBook(1).getPrice(), 0.005);
 
         handler.updateComicBook(1, 200, Condition.AS_NEW);
