@@ -56,19 +56,23 @@ public class ComicBook {
     }
 
     private void validateSale(Double salePrice, Date releaseDate) {
-        if (!validatePrice(salePrice)) {
-            throw new IllegalArgumentException("Cannot sell a book for negative price");
+        validatePrice(price);
+        validateState();
+    }
+
+    private void validatePrice(double price) {
+        if (price < 0) {
+            throw new IllegalArgumentException("Price cannot be negative");
         }
+    }
+
+    private void validateState() {
         if (isSold) {
             throw new IllegalStateException("Cannot sell a book that is already sold");
         }
         if (this.condition == Condition.UNDER_EVALUATION) {
             throw new IllegalStateException("Cannot sell a book that is under evaluation");
         }
-    }
-
-    private boolean validatePrice(double price) {
-        return price > 0;
     }
 
     public double getPriceDiff() {
