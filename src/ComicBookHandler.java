@@ -2,7 +2,6 @@ import java.util.*;
 
 public class ComicBookHandler implements IComicBookHandler, IComicReleaseHandler {
     private List<ComicRelease> comicReleases;
-
     private List<ComicBook> comicBooks;
 
     public ComicBookHandler() {
@@ -34,7 +33,7 @@ public class ComicBookHandler implements IComicBookHandler, IComicReleaseHandler
             comicBooks.add(comicBook);
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Cold not register comic book.");
+            System.out.println("Could not register comic book.");
         }
     }
 

@@ -55,14 +55,22 @@ public class ComicBook {
         setSaleDate(saleDate);
     }
 
-    private void validateSale(Double salePrice, Date releaseDate) {
+    private void validateSale(Double salePrice, Date saleDate) {
         validatePrice(price);
+        validateSaleDate(saleDate);
         validateState();
     }
 
     private void validatePrice(double price) {
         if (price < 0) {
             throw new IllegalArgumentException("Price cannot be negative");
+        }
+    }
+
+    private void validateSaleDate(Date saleDate) {
+        if (saleDate.before(arrival)) {
+            throw new IllegalArgumentException("Sale date cannot be before " +
+                    "the arrival date of the comic!");
         }
     }
 
@@ -77,7 +85,8 @@ public class ComicBook {
 
     public double getPriceDiff() {
         if (!isSold) {
-            throw new IllegalArgumentException("Is not sold");
+            throw new IllegalArgumentException("Cannot get sale and original price difference" +
+                    "of an item that is not sold yet");
         }
         return this.getPrice() - this.getSalePrice();
     }
