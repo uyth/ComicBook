@@ -132,7 +132,7 @@ public class ComicBookHandler implements IComicBookHandler, IComicReleaseHandler
         }
     }
 
-    public void prinAllReleases() {
+    public void printAllReleases() {
         for (ComicRelease release : comicReleases) {
             System.out.println(release);
         }
