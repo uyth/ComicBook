@@ -2,7 +2,6 @@ import java.util.Date;
 
 public class ComicRelease {
 
-    private static int releaseCounter = 0;
     private int id;
     private double price;
     private String genre;
@@ -14,7 +13,6 @@ public class ComicRelease {
             setPrice(price);
             setGenre(genre);
             setReleaseDate(releaseDate);
-            setId();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -69,9 +67,8 @@ public class ComicRelease {
         return id;
     }
 
-    public void setId() {
-        releaseCounter++;
-        this.id = releaseCounter;
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

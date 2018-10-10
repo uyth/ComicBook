@@ -3,8 +3,6 @@ import java.util.Date;
 
 public class ComicBook {
 
-    private static int bookCounter = 0;
-
     private int id;
     private ComicRelease release;
     private Condition condition;
@@ -21,7 +19,6 @@ public class ComicBook {
             setCondition(condition);
             setArrival(arrival);
             setPrice(price);
-            setId();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -139,9 +136,8 @@ public class ComicBook {
         return id;
     }
 
-    public void setId() {
-        bookCounter++;
-        this.id = bookCounter;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getSalePrice() {

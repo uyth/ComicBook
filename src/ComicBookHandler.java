@@ -4,6 +4,9 @@ public class ComicBookHandler implements IComicBookHandler, IComicReleaseHandler
     private List<ComicRelease> comicReleases;
     private List<ComicBook> comicBooks;
 
+    private int releaseCounter = 0;
+    private int bookCounter = 0;
+
     public ComicBookHandler() {
         comicReleases = new ArrayList<>();
         comicBooks = new ArrayList<>();
@@ -13,6 +16,8 @@ public class ComicBookHandler implements IComicBookHandler, IComicReleaseHandler
     public void registerComicRelease(String genre, double price, Date releaseDate) {
         try {
             ComicRelease release = new ComicRelease(price, genre, releaseDate);
+            releaseCounter++;
+            release.setId(releaseCounter);
             comicReleases.add(release);
         } catch (Exception e) {
             System.out.println("Could not register comic book release");
@@ -30,6 +35,8 @@ public class ComicBookHandler implements IComicBookHandler, IComicReleaseHandler
         try {
             ComicRelease release = getComicRelease(releaseID);
             ComicBook comicBook = new ComicBook(release, price, condition, arrival);
+            bookCounter++;
+            comicBook.setId(bookCounter);
             comicBooks.add(comicBook);
         } catch (Exception e) {
             e.printStackTrace();
