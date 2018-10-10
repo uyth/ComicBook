@@ -53,7 +53,7 @@ public class ComicBook {
     }
 
     private void validateSale(Double salePrice, Date saleDate) {
-        validatePrice(price);
+        validatePrice(salePrice);
         validateSaleDate(saleDate);
         validateState();
     }
@@ -125,6 +125,9 @@ public class ComicBook {
     }
 
     public Date getSaleDate() {
+        if (!isSold) {
+            throw new IllegalArgumentException("Is not sold yet!");
+        }
         return saleDate;
     }
 
